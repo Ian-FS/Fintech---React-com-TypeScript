@@ -1,5 +1,13 @@
 import React from "react";
+import { useData } from "../Context/DataContext";
 
 export const Header = () => {
-  return <div>Header</div>;
+  const { data } = useData();
+  return (
+    <div>
+      {data?.map((venda) => (
+        <p key={venda.id}>{venda.nome}</p>
+      ))}
+    </div>
+  );
 };
