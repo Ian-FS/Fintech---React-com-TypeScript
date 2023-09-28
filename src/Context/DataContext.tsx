@@ -27,7 +27,7 @@ export const useData = () => {
 
 export const DataContextProvider = ({ children }: React.PropsWithChildren) => {
   const { data, error, loading } = useFetch<VendasType[]>(
-    "https://data.origamid.dev/vendas/"
+    `https://data.origamid.dev/vendas/`
   );
 
   return (

@@ -7,8 +7,8 @@ import "./Style.css";
 function App() {
   return (
     <div>
-      <Sidenav />
       <DataContextProvider>
+        <Sidenav />
         <main>
           <Header />
           <Resumo />
