@@ -6,15 +6,15 @@ import "./Style.css";
 
 function App() {
   return (
-    <div>
-      <DataContextProvider>
+    <DataContextProvider>
+      <div className="container">
         <Sidenav />
         <main>
           <Header />
           <Resumo />
         </main>
-      </DataContextProvider>
-    </div>
+      </div>
+    </DataContextProvider>
   );
 }
 
