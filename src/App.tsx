@@ -7,7 +7,7 @@ import "./Style.css";
 function App() {
   return (
     <DataContextProvider>
-      <body>
+      <div>
         <div className="container">
           <Sidenav />
           <main>
@@ -15,7 +15,7 @@ function App() {
             <Resumo />
           </main>
         </div>
-      </body>
+      </div>
     </DataContextProvider>
   );
 }
