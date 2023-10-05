@@ -1,4 +1,5 @@
 import React from "react";
+import { getDateAnyMonthsAgo, useData } from "../Context/DataContext";
 
 const style: React.CSSProperties = {
   padding: "var(--gap) var(--gap-s)",
@@ -18,7 +19,19 @@ function nomeMes(n: number) {
 
 const MesBtn = ({ n }: { n: number }) => {
   nomeMes(n);
-  return <button style={style}>{nomeMes(n)}</button>;
+
+  const { setInicio, setFinal } = useData();
+
+  function setMes() {
+    setInicio(getDateAnyMonthsAgo(n, 1));
+    setFinal(getDateAnyMonthsAgo(n + 1, 0));
+  }
+
+  return (
+    <button onClick={() => setMes()} style={style}>
+      {nomeMes(n)}
+    </button>
+  );
 };
 
 export default MesBtn;

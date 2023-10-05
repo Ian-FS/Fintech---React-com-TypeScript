@@ -29,20 +29,34 @@ export const useData = () => {
   return context;
 };
 
-function getAnyDaysAgo(daysAgo: number) {
-  const dateInicio = new Date();
-  dateInicio.setDate(dateInicio.getDate() - daysAgo);
-
-  const yyyyInicio = dateInicio.getFullYear();
-  const mmInicio = String(dateInicio.getMonth() + 1).padStart(2, "0");
-  const ddInicio = String(dateInicio.getDate()).padStart(2, "0");
+function formatDate(date: Date) {
+  const yyyyInicio = date.getFullYear();
+  const mmInicio = String(date.getMonth() + 1).padStart(2, "0");
+  const ddInicio = String(date.getDate()).padStart(2, "0");
 
   return `${yyyyInicio}-${mmInicio}-${ddInicio}`;
 }
 
+export function getDateAnyDaysAgo(daysAgo: number) {
+  const date = new Date();
+  date.setDate(date.getDate() - daysAgo);
+
+  const dateFormated = formatDate(date);
+  return dateFormated;
+}
+
+export function getDateAnyMonthsAgo(monthsAgo: number, day: number) {
+  const date = new Date();
+  date.setMonth(date.getMonth() + monthsAgo);
+  date.setDate(day);
+
+  const dateFormated = formatDate(date);
+  return dateFormated;
+}
+
 export const DataContextProvider = ({ children }: React.PropsWithChildren) => {
-  const [inicio, setInicio] = useState(getAnyDaysAgo(60));
-  const [final, setFinal] = useState(getAnyDaysAgo(0));
+  const [inicio, setInicio] = useState(getDateAnyDaysAgo(60));
+  const [final, setFinal] = useState(getDateAnyDaysAgo(0));
 
   const { data, error, loading } = useFetch<VendasType[]>(
     `https://data.origamid.dev/vendas/?inicio=${inicio}&final=${final}`
