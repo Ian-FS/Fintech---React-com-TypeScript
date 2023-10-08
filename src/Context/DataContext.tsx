@@ -1,7 +1,7 @@
 import React, { Children, useContext, useState } from "react";
 import useFetch from "../Hooks/useFetch";
 
-type VendasType = {
+export type VendasType = {
   id: string;
   nome: string;
   preco: number;

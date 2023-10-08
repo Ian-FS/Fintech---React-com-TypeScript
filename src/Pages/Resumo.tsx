@@ -45,6 +45,7 @@ export const Resumo = () => {
           </span>
         </div>
       </div>
+      <div className="box">Gráficos</div>
     </section>
   );
 };
