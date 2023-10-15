@@ -8,7 +8,6 @@ export const Header = () => {
 
   const { pathname } = useLocation();
   useEffect(() => {
-    console.log(pathname);
     switch (pathname) {
       case "/":
         setTitle("Resumo");
