@@ -1,6 +1,7 @@
 import { VendasType } from "../Context/DataContext";
 import { useParams } from "react-router-dom";
 import useFetch from "../Hooks/useFetch";
+import Loading from "../Components/Loading";
 
 type VendaType = Omit<VendasType, "data">;
 
@@ -11,7 +12,8 @@ const Venda = () => {
   const { data, loading } = useFetch<VendasType>(
     `https://data.origamid.dev/vendas/${id}`
   );
-  if (data === null) return;
+  if (loading === true) return <Loading />;
+  if (data === null) return null;
 
   return (
     <div>

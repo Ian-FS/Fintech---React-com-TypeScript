@@ -4,9 +4,9 @@ import Meses from "./Meses";
 import { useLocation } from "react-router-dom";
 
 export const Header = () => {
-  const [title, setTitle] = useState("Resumo");
-
   const { pathname } = useLocation();
+  const [title, setTitle] = useState<string>(pathname);
+
   useEffect(() => {
     switch (pathname) {
       case "/":
