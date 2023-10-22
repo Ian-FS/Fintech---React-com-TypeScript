@@ -15,10 +15,10 @@ type VendaDiaType = {
   falha: number;
 };
 
-function transformData(data: VendasType[]): VendaDiaType[] {
+function transformData(data: VendasType[]): VendaDiaType {
   const dias = data.reduce((acc: { [key: string]: VendaDiaType }, venda) => {
     const dia = venda.data.substring(5, 10);
-    console.log(dia);
+    console.log(acc[dia]);
     if (acc[dia]) {
       acc[dia]["pago"] += 1;
       acc[dia]["processando"] += 1;
@@ -31,11 +31,10 @@ function transformData(data: VendasType[]): VendaDiaType[] {
         falha: 0,
       };
     }
-    console.log(acc);
     return acc;
   }, {});
-  console.log([dias]);
-  return [dias];
+  console.log(Object.values(dias));
+  return Object.values(dias);
 }
 
 const GraficoVendas = ({ data }: { data: VendasType[] }) => {
@@ -52,9 +51,9 @@ const GraficoVendas = ({ data }: { data: VendasType[] }) => {
         <XAxis dataKey="data" />
         <Tooltip />
         <CartesianGrid stroke="#f5f5f5" />
-        <Line type="monotone" dataKey="status" stroke="#ff7300" />
-        <Line type="monotone" dataKey="pagamento" stroke="#387908" />
-        <Line type="monotone" dataKey="parcelas" stroke="#100879" />
+        <Line type="monotone" dataKey="pago" stroke="#ff7300" />
+        <Line type="monotone" dataKey="processando" stroke="#387908" />
+        <Line type="monotone" dataKey="falha" stroke="#100879" />
       </LineChart>
     </ResponsiveContainer>
   );
