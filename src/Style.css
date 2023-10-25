@@ -1,11 +1,16 @@
 html {
-  --color-1: #463220;
-  --color-2: #66593c;
-  --color-3: #eceadd;
-  --color-4: #f7f8f5;
-  --color-5: #ffffff;
+  --color-1: #273142;
+  --color-2: #556270;
+  --color-3: #e9e501;
+  --color-4: #f8f8e1;
+  --color-5: #e9debf;
   --gap-s: 0.625rem;
   --gap: 1.25rem;
+}
+
+.box {
+  outline: 2px solid var(--color-2);
+  margin-bottom: var(--gap);
 }
 
 body {

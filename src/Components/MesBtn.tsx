@@ -28,7 +28,7 @@ const MesBtn = ({ n }: { n: number }) => {
   }
 
   return (
-    <button onClick={() => setMes()} style={style}>
+    <button className="box" onClick={() => setMes()} style={style}>
       {nomeMes(n)}
     </button>
   );
